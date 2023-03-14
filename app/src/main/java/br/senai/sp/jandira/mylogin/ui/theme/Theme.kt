@@ -1,4 +1,4 @@
-package br.senai.sp.jandira.mylogin.ui.theme
+package br.senai.sp.jandira.mylogin.ui.theme.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

@@ -1,13 +1,11 @@
 package br.senai.sp.jandira.mylogin
 
 import android.os.Bundle
-import android.text.style.LeadingMarginSpan
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,21 +18,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.mylogin.ui.theme.ui.theme.MyLoginTheme
 
-class MainActivity : ComponentActivity() {
+class SignUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyLoginTheme() {
-                login()
+            MyLoginTheme {
+                singUp()
             }
         }
     }
 }
 
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun login() {
+fun singUp() {
     Surface(
         modifier = Modifier.fillMaxSize(),
     ) {
@@ -49,25 +46,24 @@ fun login() {
             ) {
                 Surface(
                     modifier = Modifier
-                        .width(140.dp)
-                        .height(50.dp), color = Color(207, 6, 240),
+                        .width(120.dp)
+                        .height(40.dp), color = Color(207, 6, 240),
                     shape = RoundedCornerShape(0.dp, 0.dp, 0.dp, 15.dp)
 
                 ) {
 
                 }
             }
-            Spacer(modifier = Modifier.height(150.dp))
-
             //main
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(15.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Login",
-                    fontSize = 48.sp,
+                    text = "Sign Up",
+                    fontSize = 32.sp,
                     color = Color(207, 6, 240),
                     fontWeight = FontWeight(700)
                 )
@@ -75,7 +71,39 @@ fun login() {
                     text = "Please sign in to continue.",
                     color = Color(160, 156, 156),
                 )
-                Spacer(modifier = Modifier.height(87.dp))
+                Spacer(modifier = Modifier.height(31.dp))
+                OutlinedTextField(
+                    value = "", onValueChange = {},
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    label = { Text(text = "Username") },
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = br.senai.sp.jandira.mylogin.R.drawable.baseline_person_24),
+                            contentDescription = "",
+                            tint = Color(207, 6, 240)
+                        )
+                    }
+
+                )
+                Spacer(modifier = Modifier.height(31.dp))
+                OutlinedTextField(
+                    value = "", onValueChange = {},
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    label = { Text(text = "Phone") },
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = br.senai.sp.jandira.mylogin.R.drawable.baseline_phone_android_24),
+                            contentDescription = "",
+                            tint = Color(207, 6, 240)
+                        )
+                    }
+
+                )
+                Spacer(modifier = Modifier.height(31.dp))
                 OutlinedTextField(
                     value = "", onValueChange = {},
                     modifier = Modifier
@@ -84,7 +112,7 @@ fun login() {
                     label = { Text(text = "Email") },
                     leadingIcon = {
                         Icon(
-                            painter = painterResource(id = R.drawable.baseline_email_24),
+                            painter = painterResource(id = br.senai.sp.jandira.mylogin.R.drawable.baseline_email_24),
                             contentDescription = "",
                             tint = Color(207, 6, 240)
                         )
@@ -100,25 +128,37 @@ fun login() {
                     label = { Text(text = "Password") },
                     leadingIcon = {
                         Icon(
-                            painter = painterResource(id = R.drawable.baseline_https_24),
+                            painter = painterResource(id = br.senai.sp.jandira.mylogin.R.drawable.baseline_https_24),
                             contentDescription = "",
                             tint = Color(207, 6, 240)
                         )
                     }
                 )
+                Spacer(modifier = Modifier.height(21.dp))
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    Row() {
+                        Checkbox(checked = false, onCheckedChange ={} )
+                        Row(modifier = Modifier.padding(top = 14.dp)) {
+                            Text(text = "Over 18?")
+                        }
+                    }
+                }
+
+
                 Spacer(modifier = Modifier.height(31.dp))
 
                 Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.End) {
                     Button(
                         onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .height(48.dp)
-                            .width(134.dp),
+                        modifier = Modifier.fillMaxWidth().height(48.dp),
                         colors = ButtonDefaults.buttonColors(Color(207, 6, 240)),
                         shape = RoundedCornerShape(16.dp)
                     ) {
                         Text(
-                            text = "SIGN IN", color = Color.White,
+                            text = "CREATE ACCOUNT", color = Color.White,
 
                             )
                     }
@@ -128,13 +168,13 @@ fun login() {
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
 
                     Text(
-                        text = "Don’t have an account?",
+                        text = "Already have an account?",
                         fontSize = 12.sp,
                         color = Color(160, 156, 156),
                         fontWeight = FontWeight(400)
                     )
                     Text(
-                        text = "Sign up",
+                        text = "Sign in",
                         fontSize = 12.sp,
                         color = Color(207, 6, 240),
                         fontWeight = FontWeight(400)
@@ -149,8 +189,8 @@ fun login() {
             ) {
                 Surface(
                     modifier = Modifier
-                        .width(140.dp)
-                        .height(50.dp), color = Color(207, 6, 240),
+                        .width(120.dp)
+                        .height(40.dp), color = Color(207, 6, 240),
                     shape = RoundedCornerShape(0.dp, 15.dp, 0.dp, 0.dp)
 
                 ) {
@@ -163,6 +203,3 @@ fun login() {
 
     }
 }
-
-
-
