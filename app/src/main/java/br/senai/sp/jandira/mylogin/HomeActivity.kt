@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -16,8 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.mylogin.ui.theme.ui.theme.MyLoginTheme
 
 class HomeActivity : ComponentActivity() {
@@ -64,12 +67,26 @@ fun homeActivity() {
                         modifier = Modifier.fillMaxWidth(),
                         verticalArrangement = Arrangement.Bottom
                     ) {
-                        Row() {
+                        Spacer(modifier = Modifier.height(51.dp))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 painterResource(id = R.drawable.baseline_location_on_24 )  ,
-                                contentDescription = "")
+                                contentDescription = "",
+                                tint = Color.White )
+                            Text(text = "You're in Paris", color = Color.White,  )
                         }
-                        Text(text = "You're in Paris")
+                        Column(modifier = Modifier.padding(start = 24.dp)) {
+                            Text(
+                                text = "My Trips",
+                                color = Color.White,
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight(1000),
+                            )
+                        }
+
+
+
+
                     }
                 }
             }
